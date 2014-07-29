@@ -3,17 +3,18 @@ import pickle
 import os
 
 
-def load_pickle(fname):
+def load_pickle(fname, default=None):
     ''' load pickled object from file(fname)
     Args:
         fname: file name which contains pickled object you want to load
+        default: default return value when not file named fname
     Return:
         file_content: if fname exists, load and return pickled object
                       otherwise, return None
     '''
     if not os.path.exists(fname):
         print('{0} not found.'.format(fname))
-        return None
+        return default
     with open(fname, 'rb') as f:
         content = pickle.load(f)
     return content

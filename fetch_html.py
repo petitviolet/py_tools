@@ -6,17 +6,20 @@
 import requests
 
 
-def fetch_html(url):
-    ''' urlを与えるとhtmlとencodingを返す
+def fetch_html_with_encoding(url):
+    ''' Return html and encoding of url
+    Args:
+        url: url you want to fetch html
+    Return:
+        html, encoding if fetch html succeeded, else False, False
     '''
     try:
         result = requests.get(url)
+        if result.ok:
+            return result.content, result.encoding
+        else:
+            print('error ...', result, url)
     except Exception as e:
         print(e)
-        return False, False
-    if result.ok:
-        return result.content, result.encoding
-    else:
-        print('error ...', result, url)
-        return False, False
+    return False, False
 

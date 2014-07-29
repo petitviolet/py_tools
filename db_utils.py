@@ -1,6 +1,4 @@
 # -*- encoding:utf-8 -*-
-'''
-'''
 import MySQLdb
 db_info = {
     'HOST': 'HOST',
